@@ -6,7 +6,8 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const url = 'mongodb+srv://haofei0124:Chf%4063565349@clusterhc.y1wkoqa.mongodb.net/mytest?retryWrites=true&w=majority&appName=ClusterHC'
+// const url = 'mongodb+srv://haofei0124:Chf%4063565349@clusterhc.y1wkoqa.mongodb.net/mytest?retryWrites=true&w=majority&appName=ClusterHC'
+const url = process.env.MONGODB_URI
 let db
 
 async function connectDB() {
