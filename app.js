@@ -22,12 +22,12 @@ function getColl(name) {
 }
 
 app.get('/api/ff', async(req, res) => {
-  const {page = 1, pageSize = 10} = req.body
+  const {page = 1, pageSize = 10} = req.query
   const skip = (page - 1) * pageSize
 
   try {
     const coll = getColl('ff')
-    const data = await coll.find().skip(skip).limit(pageSize).toArray()
+    const data = await coll.find().skip(Number(skip)).limit(Number(pageSize)).toArray()
     const total = await coll.countDocuments()
     res.json({
       code: 200,
